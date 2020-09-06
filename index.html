@@ -13,5 +13,16 @@
     	<script type="text/javascript" src="assets/js/modernizr.custom.js"></script>
     	<script type="text/javascript" src="assets/js/scrollReveal.min.js"></script>
     	<script type="text/javascript" src="assets/js/clipboard.min.js"></script>
+	 <style>
+    /* Ensure elements load hidden before ScrollReveal runs */
+
+    #headerwrap {
+        visibility: hidden;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+    </style>
 </head>
 </html>
