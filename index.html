@@ -74,5 +74,73 @@
         </div>
         <div id="particles-js">
         </div>
+	 <script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/assets/js/jquery.easing.1.3.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+        <script type="text/javascript" src="/assets/js/app.js"></script>
+        <script>
+        window.sr = new scrollReveal();
+        </script>
+        <script>
+        var winBreak = 5;
+        $(window).on("scroll", function() {
+            if ($(this).scrollTop() > winBreak) {
+                $("#navCont").addClass("whitebg in");
+            } else {
+                $("#navCont").removeClass("whitebg in");
+            }
+        });
+        </script>
+        <!-- Preloader -->
+        <script type="text/javascript">
+        $(window).on('load', function() { // makes sure the whole site is loaded
+            $('#status').fadeOut(); // will first fade out the loading animation
+            $('#preloader').delay(350).fadeOut('slow'); // will fade out the white DIV that covers the website.
+            $('body').delay(350).css({
+                'overflow': 'visible'
+            });
+        })
+        $('[data-toggle="popover"]').popover();
+        //]]>
+        </script>
+        <script type="text/javascript">
+        var clipboard = new Clipboard('.btn-email-copy');
+        clipboard.on('success', function(e) {});
+        clipboard.on('error', function(e) {
+            console.log("Oops. Something went wrong!")
+        });
+        $('.btn-email-copy').click(function() {
+            $(this).html("Email Address Copied!")
+        })
+        </script>
+        <script type="text/javascript">
+        $(".hidden-form").hide();
+        $('.btn-reveal').click(function() {
+            $(".after-hide").hide();
+            $(".form-body").slideDown();;
+            $(".form-divider").show();
+            $(".form-alt-btn").show();
+            $("html, body").animate({
+                scrollTop: $(document).height()
+            }, "slow");
+            return false;
+        })
+        </script>
+        <script>
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-90764052-1', 'auto');
+        ga('send', 'pageview');
+        </script>
 </body>
 </html>
