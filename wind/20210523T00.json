@@ -1,0 +1,10 @@
+{
+    "source": "WRF MOSDAT model forecast",
+    "date": "2021-05-23T00:",
+    "width": "900",
+    "height": "900",
+    "uMin": -18,
+    "uMax": 22,
+    "vMin": -14,
+    "vMax": 23
+}
