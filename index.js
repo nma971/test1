@@ -38,13 +38,13 @@ const windFiles = {
 };
 
 const meta = {
-    '2016-11-20+h': 0,
+    '2021-05-22+h': 0,
     'retina resolution': true,
     'NMA wind forecast (MOSDAC)': function () {
         window.location = 'NMA wind forecast (MOSDAC)';
     }
 };
-gui.add(meta, '2016-11-20+h', 0, 48, 6).onFinishChange(updateWind);
+gui.add(meta, '2021-05-22+h', 0, 48, 6).onFinishChange(updateWind);
 if (pxRatio !== 1) {
     gui.add(meta, 'retina resolution').onFinishChange(updateRetina);
 }
