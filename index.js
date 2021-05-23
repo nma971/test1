@@ -8,7 +8,7 @@ canvas.height = canvas.clientHeight;
 const gl = canvas.getContext('webgl', {antialiasing: false});
 
 const wind = window.wind = new WindGL(gl);
-wind.numParticles = 65536;
+wind.numParticles = 5000;
 
 function frame() {
     if (wind.windData) {
@@ -19,32 +19,32 @@ function frame() {
 frame();
 
 const gui = new dat.GUI();
-gui.add(wind, 'numParticles', 1024, 589824);
-gui.add(wind, 'fadeOpacity', 0.96, 0.999).step(0.001).updateDisplay();
-gui.add(wind, 'speedFactor', 0.05, 1.0);
-gui.add(wind, 'dropRate', 0, 0.1);
-gui.add(wind, 'dropRateBump', 0, 0.2);
+//gui.add(wind, 'numParticles', 1024, 589824);
+//gui.add(wind, 'fadeOpacity', 0.96, 0.999).step(0.001).updateDisplay();
+//gui.add(wind, 'speedFactor', 0.05, 1.0);
+//gui.add(wind, 'dropRate', 0, 0.1);
+//gui.add(wind, 'dropRateBump', 0, 0.2);
 
 const windFiles = {
-    0: '20210522T00',
-    6: '20210522T06',
-    12: '20210522T12',
-    18: '20210522T18',
-    24: '20210523T00',
-    30: '20210523T06',
-    36: '20210523T12',
-    42: '20210523T18',
-    48: '20210523T21'
+    0: '20210523T00',
+    6: '20210523T06',
+    12: '20210523T12',
+    18: '20210523T18',
+    24: '20210524T00',
+    30: '20210524T06',
+    36: '20210524T12',
+    42: '20210524T18',
+    48: '20210525T21'
 };
 
 const meta = {
-    '2021-05-22+h': 0,
+    '2021-05-23+h': 0,
     'retina resolution': true,
     'NMA wind forecast (MOSDAC)': function () {
         window.location = 'NMA wind forecast (MOSDAC)';
     }
 };
-gui.add(meta, '2021-05-22+h', 0, 48, 6).onFinishChange(updateWind);
+gui.add(meta, '2021-05-23+h', 0, 48, 6).onFinishChange(updateWind);
 if (pxRatio !== 1) {
     gui.add(meta, 'retina resolution').onFinishChange(updateRetina);
 }
@@ -59,8 +59,8 @@ function updateRetina() {
     wind.resize();
 }
 
-getJSON('https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_110m_coastline.geojson', function (data) {
-    const canvas = document.getElementById('country');
+getJSON('mosdac.geojson', function (data) {
+    const canvas = document.getElementById('coastline');
     canvas.width = canvas.clientWidth * pxRatio;
     canvas.height = canvas.clientHeight * pxRatio;
 
@@ -74,8 +74,8 @@ getJSON('https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_110m_coastl
         const line = data.features[i].geometry.coordinates;
         for (let j = 0; j < line.length; j++) {
             ctx[j ? 'lineTo' : 'moveTo'](
-                (line[j][0] + 180) * canvas.width / 360,
-                (-line[j][1] + 90) * canvas.height / 180);
+                (line[j][0]-63.5)*53,
+                (-line[j][1]+34)*44);
         }
     }
     ctx.stroke();
