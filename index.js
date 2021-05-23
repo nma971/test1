@@ -74,8 +74,8 @@ getJSON('mosdac.geojson', function (data) {
         const line = data.features[i].geometry.coordinates;
         for (let j = 0; j < line.length; j++) {
             ctx[j ? 'lineTo' : 'moveTo'](
-                (line[j][0]-63.5)*53,
-                (-line[j][1]+34)*44);
+                (line[j][0]-63.5)*canvas.width/38,
+                (-line[j][1]+34)*canvas.height/29);
         }
     }
     ctx.stroke();
